@@ -32,6 +32,16 @@ def note_update(request, pk):
         form = NoteForm(instance=note)
     return render(request, 'notes/note_form.html', {'form': form})
 
-
-
+def note_create(request):
+    if request.method == "POST":
+        form = NoteForm(request.POST)
+        if form.is_valid():
+            note = form.save(commit=False)
+            if request.user.is_authenticated:
+                note.author = request.user
+            note.save()
+            return redirect('note_list')
+    else:
+        form = NoteForm()
+        return render(request, 'notes/note_form.html', {'form': form})
 
