@@ -44,4 +44,9 @@ def note_create(request):
     else:
         form = NoteForm()
         return render(request, 'notes/note_form.html', {'form': form})
+    
+def note_delete(request, pk):
+    note = get_object_or_404(StickyNote, pk=pk)
+    note.delete()
+    return redirect('note_list')
 
