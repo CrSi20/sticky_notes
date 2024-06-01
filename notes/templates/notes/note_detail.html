@@ -6,6 +6,15 @@
     <h2> {{ note.title }}</h2>
     <p>{{ note.content }}</p>
     <p> Created at: {{ note.created_at }}</p>
+
+    {% if perms.notes.change_stickynote %}
+        <a class="back-button" href="{% url 'note_update' note.id %}">Edit note</a>
+    {% endif %}
+
+    {% if perms.notes.delete_stickynote %}
+        <a class="back-button" href="{% url 'note_delete' note.id %}">Delete note</a>
+    {% endif %}
+
     <a href="{% url 'note_list' %}">Back to Note List</a>
   
 {% endblock %}

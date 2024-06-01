@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth import login, logout
 from .forms import RegisterForms
 
@@ -17,6 +17,11 @@ def register_user(request):
                 new_user.username = form.cleaned_data["username"]
                 new_user.set_password(password)
                 new_user.save()
+                if request.POST['account_type'] == 'poster':
+                    group = Group.objects.get(name='posters')
+                elif request.POST['account_type'] == 'reader':
+                    group = Group.objects.get(name='readers')
+                new_user.groups.add(group)
                 login(request, new_user)
                 return redirect("note_list")
     form = RegisterForms()
