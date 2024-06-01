@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from .models import StickyNote
 from .forms import NoteForm
 
@@ -24,7 +24,7 @@ def note_detail(request, pk):
     return render(request, "notes/note_detail.html", {"note": note})
 
 
-@login_required
+@permission_required("notes.change_stickynote", login_url="note_list")
 def note_update(request, pk):
     note = get_object_or_404(StickyNote, pk=pk)
     if request.method == "POST":
@@ -38,7 +38,7 @@ def note_update(request, pk):
     return render(request, "notes/note_form.html", {"form": form})
 
 
-@login_required
+@permission_required("notes.add_stickynote", login_url="note_list")
 def note_create(request):
     if request.method == "POST":
         form = NoteForm(request.POST)
