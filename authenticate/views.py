@@ -8,6 +8,12 @@ from .forms import RegisterForms
 
 
 def register_user(request):
+    """A view function corresponding to the page to register
+    a user
+
+        Parameters:
+            - request - the Http request
+    """
     if request.method == "POST":
         form = RegisterForms(request.POST)
         if form.is_valid():
@@ -31,5 +37,10 @@ def register_user(request):
 
 
 def logout_user(request):
+    """A view function corresponding to the logout functionality
+
+    Parameters:
+        - request - the Http request
+    """
     logout(request)
     return redirect('login')
