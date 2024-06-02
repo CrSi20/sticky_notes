@@ -3,22 +3,47 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} My Sticky Notes {% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title style="font-family: fantasy; text-align: center;">{% block title %} My Sticky Notes {% endblock %}</title>
     <link rel="stylesheet" href="{% static 'notes/styles.css' %}">
 </head>
+
 <body>
     <header>
-        <h1> {% block header %} My Sticky Notes App {% endblock %}</h1>
+        <h1 style="font-family: fantasy;"> {% block header %} My Sticky Notes App {% endblock %}</h1>
     </header>
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-3" style="margin-top: 10px; margin-bottom: 20px;">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'logout' %}">Logout</a>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8">
+            <main>
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+        <div class="col-md-2">
+        </div>
+    </div>
     <footer>
-
+        <div class="footer">
+            <p>&copy; 2024 Sticky Notes</p>
+        </div>
     </footer>
 </body>
+
 </html>

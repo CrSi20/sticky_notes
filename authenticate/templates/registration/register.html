@@ -8,7 +8,7 @@
     {% csrf_token %}
     {{ form.as_p }}
     <label for="account_type">Account Type</label>
-    <select name="account_type" id="account_type">
+    <select style="margin-top: 15px; margin-bottom: 15px;" name="account_type" id="account_type">
         <option value="reader">Reader</option>
         <option value="poster">Poster</option>
     </select><br>

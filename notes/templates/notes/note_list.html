@@ -3,7 +3,7 @@
 {% block title %}My Sticky Notes -  {{ page_title }}{% endblock %}
 
 {% block content %}
-    <h2> {{ page_title }}</h2>
+    <h2> {{ page_title }}</h2><br><br>
     <ul>
      {% for note in notes %}
         <li>
@@ -13,11 +13,9 @@
     {% endfor %}
     </ul>
     {% if perms.notes.add_stickynote %}
-        <a class="add-button" href="{% url 'note_create' %}">Add new note</a>
-    {% endif %}
-
-    {% if request.user.is_authenticated %}
-        <a class="back-button" href="{% url 'logout' %}">Logout</a>
+    <div style="text-align: center; margin-bottom: 50px;">
+        <a class="back-button" href="{% url 'note_create' %}">Add new note</a>
+    </div>
     {% endif %}
 
 {% endblock %}

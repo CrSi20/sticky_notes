@@ -8,13 +8,17 @@
     <p> Created at: {{ note.created_at }}</p>
 
     {% if perms.notes.change_stickynote %}
-        <a class="back-button" href="{% url 'note_update' note.id %}">Edit note</a>
+        <a style="margin-right: 10px;" class="back-button" href="{% url 'note_update' note.id %}">Edit note</a>
     {% endif %}
 
     {% if perms.notes.delete_stickynote %}
         <a class="back-button" href="{% url 'note_delete' note.id %}">Delete note</a>
     {% endif %}
 
-    <a href="{% url 'note_list' %}">Back to Note List</a>
+    <br><br>
+    <div style="text-align: center;">
+        <a href="{% url 'note_list' %}">Back to Note List</a>
+    </div>
   
+    <br><br>
 {% endblock %}
