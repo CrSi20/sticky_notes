@@ -131,6 +131,8 @@ STATIC_ROOT = BASE_DIR / "static"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Constants to specify path to login, and the redirect path
+# following login
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'note_list'
 
