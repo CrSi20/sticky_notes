@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth import login, logout
 from .forms import RegisterForms
 
+
 # Create your views here.
 
 

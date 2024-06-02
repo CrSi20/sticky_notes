@@ -3,14 +3,20 @@
 {% block title %} My Sticky Notes - {% if form.instance.pk %}Edit{% else %}Create{% endif %} Note{% endblock %}
 
 {% block content %}
-<h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %}Note</h2>
+<h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Note</h2>
 <form method="POST" action="{% if form.instance.pk %}{% url 'note_update' pk=form.instance.pk %}{% else %}
 {% url 'note_create' %}{% endif %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save</button>
+    <button class="back-button" type="submit">Save</button>
 </form>
-<a href="{% url 'note_list' %}">Back to Post List</a>
+
+<br><br>
+<div style="text-align: center;">
+    <a href="{% url 'note_list' %}">Back to Note List</a>
+</div>  
+<br><br>
+
 {% endblock %}
 
 
